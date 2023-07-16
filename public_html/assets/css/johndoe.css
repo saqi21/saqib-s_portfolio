@@ -2763,6 +2763,8 @@ fieldset:disabled a.btn {
   color: #fff;
   background-color: #F85C70;
   border-color: #F85C70;
+  font-size: 17px;
+  font-weight: 700;
 }
 
 .btn-primary:hover {
@@ -11684,5 +11686,5 @@ pre .code {
     max-width: 100%;
     position: absolute;
     right: -8px;
-    top: -3px;
+    top: -15px;
 }

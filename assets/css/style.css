@@ -11741,3 +11741,40 @@ pre .code {
   font-weight: 800;
   right: 7px !important;
 }
+
+.article-slider {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.slide {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.article {
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.slick-dots li button:before {
+  font-size: 12px !important;
+  color: #dc3545 !important;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .article-slider {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .article {
+    padding: 15px;
+    font-size: 14px;
+  }
+}

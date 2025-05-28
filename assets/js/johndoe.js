@@ -110,3 +110,38 @@ function initMap() {
   });
 }
 
+//Skills
+const skills = [
+    { name: "Cypress with JS", percentage: 98 },
+    { name: "Selenium Webdriver", percentage: 97 },
+    { name: "Java Automation Test Cases", percentage: 97 },
+    { name: "HTML5 & CSS3", percentage: 97 },
+    { name: "Bootstrap", percentage: 90 },
+    { name: "Tailwind Css", percentage: 97 },
+    { name: "JavaScript", percentage: 85 },
+    { name: "Java", percentage: 80 },
+    { name: "SQL", percentage: 55 },
+    { name: "Ruby on Rails", percentage: 60 },
+    { name: "Test Planning", percentage: 85 },
+    { name: "Regression Testing", percentage: 90 },
+    { name: "Bug Tracking", percentage: 99 },
+    { name: "Performance Testing", percentage: 84 },
+    { name: "Cross-Browser Testing", percentage: 100 },
+    { name: "Mobile Testing", percentage: 99 },
+    { name: "Test Documentation", percentage: 90 }
+];
+
+const skillsContainer = document.getElementById("skills-container");
+
+skills.forEach(skill => {
+    const skillHTML = `
+        <div class="progress-bar-main mb-2 position-relative">
+            <div class="skill-progress-bar" role="progressbar" style="width: ${skill.percentage}%" aria-valuenow="${skill.percentage}"
+                aria-valuemin="0" aria-valuemax="100">
+                ${skill.name}
+            </div>
+            <p class="m-0 p-0 percentage-position position-absolute">${skill.percentage}%</p>
+        </div>`;
+    
+    skillsContainer.innerHTML += skillHTML;
+});

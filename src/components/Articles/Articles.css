@@ -1,0 +1,105 @@
+/* Latest Articles - modern, responsive slider and cards */
+#blog.section {
+  padding: 6rem 0;
+  background: var(--dark-bg);
+}
+
+#blog .container h2 {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 2.5rem !important;
+}
+
+.article-slider {
+  position: relative;
+}
+
+/* Card */
+.blog-card {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 1.25rem;
+  background: var(--dark-card);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.blog-card .img-holder {
+  position: relative;
+  min-height: 260px;
+  overflow: hidden;
+}
+
+.blog-card .img-holder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-normal);
+}
+
+.blog-card:hover .img-holder img {
+  transform: scale(1.05);
+}
+
+.blog-card .content-holder {
+  padding: 1.5rem 1.75rem;
+}
+
+.blog-card .title {
+  margin: 0 0 .75rem 0;
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.blog-card .post-details {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  color: var(--text-muted);
+  margin-bottom: .75rem;
+}
+
+.blog-card p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.read-more { text-decoration: none; font-weight: 700; }
+
+/* Slick dots minimal styling so we don't rely on external css */
+.article-slider .slick-slider { padding-bottom: 2.25rem; }
+.article-slider .slick-dots {
+  position: absolute;
+  bottom: .25rem;
+  left: 0; right: 0;
+  display: flex !important;
+  justify-content: center;
+  gap: .5rem;
+}
+.article-slider .slick-dots li { width: 10px; height: 10px; }
+.article-slider .slick-dots button { 
+  width: 10px; height: 10px; border-radius: 50%;
+  background: rgba(255,255,255,.25); border: none; text-indent: -9999px; padding: 0;
+}
+.article-slider .slick-dots .slick-active button { background: var(--primary-light); }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .blog-card { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  #blog.section { padding: 4rem 0; }
+  #blog .container h2 { font-size: 2.25rem; }
+  .blog-card .content-holder { padding: 1.25rem; }
+}
+
+@media (max-width: 480px) {
+  .blog-card .img-holder { min-height: 200px; }
+}
+
+

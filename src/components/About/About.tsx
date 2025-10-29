@@ -145,7 +145,7 @@ const About: React.FC<AboutProps> = ({ personalInfo, skills = [] }) => {
                     {skill.icon && skill.icon.startsWith('ti-') ? (
                       <i className={skill.icon}></i>
                     ) : (
-                      <img src={`/assets/imgs/${skill.icon}`} alt={skill.name} width={22} height={22} />
+                      <img src={`${process.env.PUBLIC_URL}/assets/imgs/${skill.icon}`} alt={skill.name} width={22} height={22} />
                     )}
                   </div>
                   <div className="skill-info">

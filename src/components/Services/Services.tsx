@@ -25,7 +25,7 @@ const Services: React.FC<ServicesProps> = ({ services }) => {
                   {service.icon && service.icon.startsWith('ti-') ? (
                     <i className={service.icon} aria-hidden="true"></i>
                   ) : (
-                    <img src={`/assets/imgs/${service.icon}`} alt={service.title} width={26} height={26} />
+                    <img src={`${process.env.PUBLIC_URL}/assets/imgs/${service.icon}`} alt={service.title} width={26} height={26} />
                   )}
                 </div>
                 <h3 className="service-title">{service.title}</h3>

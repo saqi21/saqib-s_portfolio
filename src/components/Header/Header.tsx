@@ -25,7 +25,7 @@ const Header: React.FC<HeaderProps> = ({ personalInfo }) => {
           <div className="nav-content">
             <div className="nav-brand">
               <div className="brand-avatar">
-                <img src="/assets/imgs/avatar.jpg" alt="Saqib Zafar" />
+                <img src={`${process.env.PUBLIC_URL}/assets/imgs/avatar.jpg`} alt="Saqib Zafar" />
               </div>
               <div className="brand-text">
                 <h4>Saqib Zafar</h4>
@@ -70,7 +70,7 @@ const Header: React.FC<HeaderProps> = ({ personalInfo }) => {
               
               <div className="hero-actions">
                 <a 
-                  href="/resume/Saqib_Zafar_Resume.pdf" 
+                  href={`${process.env.PUBLIC_URL}/resume/Saqib_Zafar_Resume.pdf`} 
                   className="btn btn-primary"
                   target="_blank"
                   download="Saqib_Zafar_Resume.pdf"
@@ -88,7 +88,7 @@ const Header: React.FC<HeaderProps> = ({ personalInfo }) => {
             <div className="hero-visual">
               <div className="hero-image-container">
                 <div className="hero-image">
-                  <img src="/assets/imgs/header.jpg" alt="Saqib Zafar" />
+                        <img src={`${process.env.PUBLIC_URL}/assets/imgs/header.jpg`} alt="Saqib Zafar" />
                 </div>
                 <div className="floating-elements">
                   <div className="floating-card card-1">

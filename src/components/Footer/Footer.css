@@ -1,0 +1,37 @@
+.footer {
+    margin: 0;
+    padding: 24px 0;
+    text-align: center;
+    position: relative;
+    background: rgba(15, 15, 35, 0.85);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--primary-gradient);
+    opacity: 0.9;
+}
+
+.footer p {
+    color: var(--text-secondary);
+}
+
+.author-name {
+    color: #F85C70;
+    font-weight: 600;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    margin-left: 10px;
+}
+
+.author-name:hover {
+    color: #F85C70;
+}

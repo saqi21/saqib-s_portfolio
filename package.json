@@ -27,6 +27,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "postbuild": "cp build/index.html build/404.html && touch build/.nojekyll",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build -b gh-pages -a",
     "test": "react-scripts test",

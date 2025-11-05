@@ -1,5 +1,6 @@
 import React from 'react';
 import { PersonalInfo, Skill } from '../../types';
+import { getAssetPath } from '../../utils/assets';
 import './About.css';
 
 interface AboutProps {
@@ -34,21 +35,21 @@ const About: React.FC<AboutProps> = ({ personalInfo, skills = [] }) => {
                 </div>
                 <div className="card-content">
                   <p className="about-intro">
-                    Hi there! I'm <strong>Saqib Zafar</strong>, a passionate Front-End Developer 
-                    and Software Quality Assurance Engineer with a Bachelor's degree in Computer Science 
-                    from GIFT University.
+                    I'm <strong>Saqib Zafar</strong>, a dedicated Front-End Developer and Software Quality Assurance Engineer 
+                    with a Bachelor's degree in Computer Science from GIFT University. I combine technical expertise with 
+                    a passion for delivering exceptional digital experiences.
                   </p>
                   
                   <p>
-                    I specialize in creating exceptional user experiences through modern frontend technologies 
-                    and ensuring software quality through comprehensive testing strategies. My expertise spans 
-                    across <strong>JavaScript, React, Ruby on Rails, Selenium WebDriver, and Cypress</strong>.
+                    I specialize in building responsive, user-friendly interfaces using modern technologies including 
+                    <strong> JavaScript, React, Ruby on Rails, Selenium WebDriver, and Cypress</strong>. My focus is on creating 
+                    seamless user experiences while ensuring the highest standards of software quality through rigorous testing.
                   </p>
                   
                   <p>
-                    With a meticulous eye for detail and a collaborative approach, I excel in both 
-                    <strong> Manual Testing</strong> and <strong>Automation Testing</strong>, helping teams 
-                    deliver robust, bug-free software solutions.
+                    With expertise in both <strong>Manual Testing</strong> and <strong>Automation Testing</strong>, I help businesses 
+                    deliver reliable, bug-free software solutions. My collaborative approach and attention to detail ensure 
+                    projects are completed on time and exceed expectations.
                   </p>
                   
                   <div className="about-stats">
@@ -145,10 +146,10 @@ const About: React.FC<AboutProps> = ({ personalInfo, skills = [] }) => {
                     {skill.icon && skill.icon.startsWith('ti-') ? (
                       <i className={skill.icon}></i>
                     ) : (
-                      <img src={`${process.env.PUBLIC_URL}/assets/imgs/${skill.icon}`} alt={skill.name} width={22} height={22} />
+                      <img src={getAssetPath(`/assets/imgs/${skill.icon}`)} alt={skill.name} width={22} height={22} />
                     )}
                   </div>
-                  <div className="skill-info">
+                  <div className="skill-info width-50">
                     <h4>{skill.name}</h4>
                     <div className="skill-bar">
                       <div className="skill-progress" style={{ width: `${skill.level}%` }}></div>

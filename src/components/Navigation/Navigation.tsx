@@ -1,5 +1,6 @@
 import React from 'react';
 import { PersonalInfo } from '../../types';
+import { getAssetPath } from '../../utils/assets';
 import './Navigation.css';
 
 interface NavigationProps {
@@ -34,7 +35,7 @@ const Navigation: React.FC<NavigationProps> = ({ personalInfo }) => {
             </li>
           </ul>
           <ul className="navbar-nav brand">
-            <img src={`${process.env.PUBLIC_URL}/assets/imgs/avatar.jpg`} alt="Saqib Zafar" className="brand-img" />
+            <img src={getAssetPath('/assets/imgs/avatar.jpg')} alt="Saqib Zafar" className="brand-img" />
             <li className="brand-txt">
               <h5 className="brand-title">Saqib Zafar</h5>
               <div className="brand-subtitle">Front End & Software Quality Assurance Engineer</div>

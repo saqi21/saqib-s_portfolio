@@ -1,5 +1,6 @@
 import React from 'react';
 import { Service } from '../../types';
+import { getAssetPath } from '../../utils/assets';
 import './Services.css';
 
 interface ServicesProps {
@@ -25,7 +26,7 @@ const Services: React.FC<ServicesProps> = ({ services }) => {
                   {service.icon && service.icon.startsWith('ti-') ? (
                     <i className={service.icon} aria-hidden="true"></i>
                   ) : (
-                    <img src={`${process.env.PUBLIC_URL}/assets/imgs/${service.icon}`} alt={service.title} width={26} height={26} />
+                    <img src={getAssetPath(`/assets/imgs/${service.icon}`)} alt={service.title} width={26} height={26} />
                   )}
                 </div>
                 <h3 className="service-title">{service.title}</h3>

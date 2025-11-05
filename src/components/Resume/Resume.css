@@ -622,7 +622,7 @@
   }
   
   .timeline-marker {
-    left: -1.5rem;
+    left: -1rem;
   }
   
   .marker-dot {
@@ -673,7 +673,6 @@
     gap: 0.5rem;
   }
   
-  .skill-percentage,
   .level-text {
     text-align: left;
   }

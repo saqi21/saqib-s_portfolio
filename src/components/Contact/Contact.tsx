@@ -176,7 +176,7 @@ const Contact: React.FC<ContactProps> = ({ personalInfo }) => {
                 {personalInfo.socialLinks.map((link) => (
                   <li key={link.platform} className="social-item">
                     <a 
-                      className="social-link text-dark" 
+                      className="social-link" 
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"

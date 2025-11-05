@@ -70,6 +70,12 @@
 
 .read-more { text-decoration: none; font-weight: 700; }
 
+/* Hide slider arrows */
+.article-slider .slick-prev,
+.article-slider .slick-next {
+  display: none !important;
+}
+
 /* Slick dots minimal styling so we don't rely on external css */
 .article-slider .slick-slider { padding-bottom: 2.25rem; }
 .article-slider .slick-dots {

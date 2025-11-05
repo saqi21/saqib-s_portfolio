@@ -61,7 +61,6 @@
   color: var(--text-primary);
   border-radius: var(--radius-md);
   padding: .9rem 1rem;
-  height: 48px;
   width: 100%;
 }
 
@@ -91,16 +90,78 @@
 .contact-submit { height: 48px; }
 
 /* Social icons list in info card */
-.social-icons { list-style: none; padding: 0; margin: 0; display: flex; gap: .75rem; }
-.social-item { }
-.social-link {
-  width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  background: var(--dark-surface);
-  color: var(--text-secondary);
-  border: 1px solid rgba(255,255,255,.12);
-  transition: transform var(--transition-normal), background var(--transition-normal);
+.social-icons { 
+  list-style: none; 
+  padding: 0; 
+  margin: 0; 
+  display: flex; 
+  gap: 1rem; 
+  flex-wrap: wrap;
 }
-.social-link:hover { transform: translateY(-2px); background: var(--primary-gradient); color: #fff; }
+
+.social-link {
+  width: 48px; 
+  height: 48px; 
+  border-radius: 12px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+  font-size: 1.25rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.social-link::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--primary-gradient);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.social-link i {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-link:hover {
+  transform: translateY(-4px);
+  border-color: transparent;
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+}
+
+.social-link:hover::before {
+  opacity: 1;
+}
+
+.social-link:hover i {
+  color: #fff;
+  transform: scale(1.1);
+}
+
+/* Brand-specific hover colors */
+.social-link[aria-label="github"]:hover::before {
+  background: #24292e;
+}
+
+.social-link[aria-label="linkedin"]:hover::before {
+  background: #0077b5;
+}
+
+.social-link[aria-label="facebook"]:hover::before {
+  background: #1877f2;
+}
+
+.social-link[aria-label="instagram"]:hover::before {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
 
 /* Info rows */
 .info-row { display: flex; gap: .75rem; align-items: center; margin-bottom: 1rem; }

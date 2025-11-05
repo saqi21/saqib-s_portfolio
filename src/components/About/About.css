@@ -170,6 +170,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+  min-width: 0;
 }
 
 .skill-card:hover {
@@ -193,6 +194,8 @@
 
 .skill-info {
   flex: 1;
+  min-width: 0;
+  width: 100%;
 }
 
 .skill-info h4 {
@@ -208,6 +211,7 @@
   border-radius: 3px;
   overflow: hidden;
   margin-bottom: 0.5rem;
+  flex-shrink: 0;
 }
 
 .skill-progress {
@@ -358,7 +362,16 @@
   }
   
   .skill-card {
-    padding: 1rem;
+    padding: 1.25rem;
+  }
+  
+  .skill-info {
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+  
+  .skill-bar {
+    width: 100%;
   }
   
   .social-icons {
@@ -370,7 +383,11 @@
   .section-title {
     font-size: 2rem;
   }
-  
+
+  .width-50 {
+    width: 100%;
+    min-width: 0;
+  }
   .card-header {
     flex-direction: column;
     text-align: center;
@@ -380,10 +397,44 @@
   .skill-card {
     flex-direction: column;
     text-align: center;
+    padding: 1.25rem;
+    gap: 1rem;
+  }
+  
+  .skill-info {
+    width: 100%;
+    min-width: 0;
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+  
+  .skill-bar {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    margin: 0.75rem auto 0.5rem;
   }
   
   .contact-item {
     flex-direction: column;
     text-align: center;
+  }
+}
+
+@media (max-width: 375px) {
+  .skill-card {
+    padding: 1rem;
+  }
+  
+  .skill-info {
+    padding: 0 0.5rem;
+  }
+  
+  .skill-bar {
+    margin: 0.5rem auto;
+  }
+  
+  .skill-info h4 {
+    font-size: 0.95rem;
   }
 }

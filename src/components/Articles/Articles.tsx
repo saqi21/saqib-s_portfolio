@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Slider from 'react-slick';
 import { Article } from '../../types';
+import { getAssetPath } from '../../utils/assets';
 import './Articles.css';
 
 interface ArticlesProps {
@@ -24,6 +25,7 @@ const Articles: React.FC<ArticlesProps> = ({ articles }) => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3500,
+    arrows: false,
     responsive: [
       {
         breakpoint: 768,
@@ -62,7 +64,7 @@ const Articles: React.FC<ArticlesProps> = ({ articles }) => {
                   <div className="blog-card pl-0">
                     <div className="img-holder">
                       <img 
-                        src={article.image} 
+                        src={getAssetPath(article.image)} 
                         alt={article.title}
                         loading="lazy"
                       />

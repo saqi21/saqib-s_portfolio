@@ -74,6 +74,7 @@ const Header: React.FC<HeaderProps> = ({ personalInfo }) => {
                   href={getAssetPath('/resume/Saqib_Zafar_Resume.pdf')} 
                   className="btn btn-primary"
                   target="_blank"
+                  rel="noopener noreferrer"
                   download="Saqib_Zafar_Resume.pdf"
                 >
                   <i className="fas fa-download"></i>

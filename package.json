@@ -28,7 +28,7 @@
     "start": "PUBLIC_URL= react-scripts start",
     "build": "PUBLIC_URL=/saqib-s_portfolio react-scripts build",
     "predeploy": "npm run build && cp build/index.html build/404.html",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d build --no-history",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -52,6 +52,6 @@
   },
   "devDependencies": {
     "@types/google.maps": "^3.58.1",
-    "gh-pages": "^6.2.0"
+    "gh-pages": "^6.3.0"
   }
 }

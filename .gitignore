@@ -5,6 +5,19 @@ node_modules/
 build/
 dist/
 
+# Root-level build artifacts (should only be in build/)
+404.html
+asset-manifest.json
+assets/
+favicon.ico
+index.html
+logo192.png
+logo512.png
+manifest.json
+resume/
+robots.txt
+static/
+
 # gh-pages cache
 .cache/
 .cache/gh-pages/
@@ -31,3 +44,4 @@ coverage/
 # Misc
 *.local
 *.swp
+node_modules

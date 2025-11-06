@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import emailjs from '@emailjs/browser';
 import { PersonalInfo, ContactFormData } from '../../types';
 import './Contact.css';
 
@@ -23,16 +24,70 @@ const Contact: React.FC<ContactProps> = ({ personalInfo }) => {
     setSubmitStatus('idle');
     
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // EmailJS configuration
+      const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+      const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID; // Contact form template
+      const autoReplyTemplateId = process.env.REACT_APP_EMAILJS_AUTO_REPLY_TEMPLATE_ID; // Auto-reply template
+      const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
       
-      // Here you would typically send the data to your backend
-      console.log('Form submitted:', data);
+      // Validate configuration
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error('EmailJS configuration is missing. Please check your .env file.');
+      }
+      
+      // Prepare template parameters for contact form submission
+      const contactFormParams = {
+        from_name: data.name,
+        from_email: data.email,
+        message: data.message,
+        reply_to: data.email, // This allows you to reply directly to the sender
+      };
+      
+      // Send contact form submission email to saqibmehar41@gmail.com
+      const contactResponse = await emailjs.send(
+        serviceId,
+        templateId,
+        contactFormParams,
+        publicKey
+      );
+      
+      console.log('Contact form email sent successfully:', contactResponse);
+      
+      // Send auto-reply email to the person who submitted the form
+      if (autoReplyTemplateId) {
+        const autoReplyParams = {
+          name: data.name,
+          email: data.email,
+          // Add any other variables your auto-reply template needs
+        };
+        
+        try {
+          const autoReplyResponse = await emailjs.send(
+            serviceId,
+            autoReplyTemplateId,
+            autoReplyParams,
+            publicKey
+          );
+          console.log('Auto-reply email sent successfully:', autoReplyResponse);
+        } catch (autoReplyError) {
+          // Don't fail the whole form if auto-reply fails
+          console.warn('Auto-reply email failed, but contact form was sent:', autoReplyError);
+        }
+      }
       
       setSubmitStatus('success');
       reset();
-    } catch (error) {
-      console.error('Form submission error:', error);
+    } catch (error: any) {
+      console.error('Email sending error:', error);
+      // Log more details for debugging
+      if (error.text) {
+        console.error('Error details:', error.text);
+      }
+      if (error.status) {
+        console.error('Error status:', error.status);
+      }
+      // Show more specific error message
+      console.error('Full error object:', JSON.stringify(error, null, 2));
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);

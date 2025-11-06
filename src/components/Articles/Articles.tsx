@@ -39,9 +39,7 @@ const Articles: React.FC<ArticlesProps> = ({ articles, useSlider = true }) => {
   };
 
   const renderArticleCard = (article: Article) => {
-    // Use process.env.PUBLIC_URL which Create React App replaces at build time
-    const publicUrl = process.env.PUBLIC_URL || '';
-    const imagePath = `${publicUrl}${article.image}`;
+    const imagePath = getAssetPath(article.image);
     
     return (
       <div key={article.id} className="blog-card">
@@ -51,23 +49,14 @@ const Articles: React.FC<ArticlesProps> = ({ articles, useSlider = true }) => {
             alt={article.title}
             loading="lazy"
             onError={(e) => {
-              // Fallback: try alternative paths
+              // Show placeholder if image fails to load
               const target = e.target as HTMLImageElement;
-              const currentSrc = target.src;
-              
-              // Try with getAssetPath as fallback
-              const fallbackPath = getAssetPath(article.image);
-              if (currentSrc !== fallbackPath && !currentSrc.includes(fallbackPath)) {
-                target.src = fallbackPath;
-              } else {
-                // Show placeholder if all attempts fail
-                target.style.display = 'none';
-                if (!target.parentElement?.querySelector('.article-image-placeholder')) {
-                  const placeholder = document.createElement('div');
-                  placeholder.className = 'article-image-placeholder';
-                  placeholder.innerHTML = '<i class="fas fa-image"></i>';
-                  target.parentElement?.appendChild(placeholder);
-                }
+              target.style.display = 'none';
+              if (!target.parentElement?.querySelector('.article-image-placeholder')) {
+                const placeholder = document.createElement('div');
+                placeholder.className = 'article-image-placeholder';
+                placeholder.innerHTML = '<i class="fas fa-image"></i>';
+                target.parentElement?.appendChild(placeholder);
               }
             }}
           />

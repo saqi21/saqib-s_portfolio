@@ -34,11 +34,13 @@
 /* Horizontal Carousel Container */
 .projects-carousel-wrapper {
   position: relative;
-  width: 100%;
-  max-width: 100%;
+  width: 100vw;
+  max-width: 100vw;
   overflow: hidden;
   padding: 2rem 0;
   margin: 0;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
 }
 
 .projects-carousel {
@@ -93,8 +95,8 @@
   text-decoration: none;
   color: inherit;
   width: 200px;
-  min-width: 200px;
-  max-width: 200px;
+  min-width: 300px;
+  max-width: 300px;
 }
 
 .project-card-link {
@@ -272,6 +274,13 @@
     font-size: 1rem;
   }
 
+  .projects-carousel-wrapper {
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+  }
+
   .project-card {
     flex: 0 0 140px; /* Smaller width */
     width: 140px;
@@ -305,6 +314,13 @@
 }
 
 @media (max-width: 480px) {
+  .projects-carousel-wrapper {
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+  }
+
   .project-card {
     flex: 0 0 120px; /* Smaller width */
     width: 120px;

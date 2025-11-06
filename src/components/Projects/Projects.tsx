@@ -15,7 +15,7 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
 
   // Calculate the exact distance for seamless loop
   // Each card is 200px + 1.5rem gap (24px) = 224px per card
-  // For 6 projects: 6 * 224 - 24 (last gap doesn't count) = 1320px
+  // For 5 projects: 5 * 224 - 24 (last gap doesn't count) = 1096px
   const cardWidth = 200; // px
   const gap = 24; // 1.5rem = 24px
   const oneSetWidth = projects.length * (cardWidth + gap) - gap;

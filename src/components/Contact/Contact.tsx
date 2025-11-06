@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import emailjs from '@emailjs/browser';
 import { PersonalInfo, ContactFormData } from '../../types';
@@ -10,7 +10,8 @@ interface ContactProps {
 
 const Contact: React.FC<ContactProps> = ({ personalInfo }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error' | 'warning'>('idle');
+  const [statusMessage, setStatusMessage] = useState<string>('');
   
   const { 
     register, 
@@ -18,6 +19,29 @@ const Contact: React.FC<ContactProps> = ({ personalInfo }) => {
     formState: { errors },
     reset 
   } = useForm<ContactFormData>();
+
+  // Auto-hide messages after specified time
+  useEffect(() => {
+    if (submitStatus === 'success') {
+      const timer = setTimeout(() => {
+        setSubmitStatus('idle');
+        setStatusMessage('');
+      }, 5000);
+      return () => clearTimeout(timer);
+    } else if (submitStatus === 'error') {
+      const timer = setTimeout(() => {
+        setSubmitStatus('idle');
+        setStatusMessage('');
+      }, 7000);
+      return () => clearTimeout(timer);
+    } else if (submitStatus === 'warning') {
+      const timer = setTimeout(() => {
+        setSubmitStatus('idle');
+        setStatusMessage('');
+      }, 6000);
+      return () => clearTimeout(timer);
+    }
+  }, [submitStatus]);
 
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
@@ -32,7 +56,10 @@ const Contact: React.FC<ContactProps> = ({ personalInfo }) => {
       
       // Validate configuration
       if (!serviceId || !templateId || !publicKey) {
-        throw new Error('EmailJS configuration is missing. Please check your .env file.');
+        setStatusMessage('EmailJS configuration is missing. Please check your .env file.');
+        setSubmitStatus('error');
+        setIsSubmitting(false);
+        return;
       }
       
       // Prepare template parameters for contact form submission
@@ -54,11 +81,14 @@ const Contact: React.FC<ContactProps> = ({ personalInfo }) => {
       console.log('Contact form email sent successfully:', contactResponse);
       
       // Send auto-reply email to the person who submitted the form
+      let autoReplyFailed = false;
       if (autoReplyTemplateId) {
+        // Use the same variable names as contact form template if using same template
+        // OR use name/email if you have a separate auto-reply template
         const autoReplyParams = {
-          name: data.name,
-          email: data.email,
-          // Add any other variables your auto-reply template needs
+          from_name: data.name,  // Match contact form template variable names
+          from_email: data.email,
+          message: 'Thank you for contacting me! I have received your message and will get back to you soon.', // Optional thank you message
         };
         
         try {
@@ -69,13 +99,21 @@ const Contact: React.FC<ContactProps> = ({ personalInfo }) => {
             publicKey
           );
           console.log('Auto-reply email sent successfully:', autoReplyResponse);
-        } catch (autoReplyError) {
-          // Don't fail the whole form if auto-reply fails
+        } catch (autoReplyError: any) {
+          // Don't fail the whole form if auto-reply fails, but show warning
           console.warn('Auto-reply email failed, but contact form was sent:', autoReplyError);
+          autoReplyFailed = true;
         }
       }
       
-      setSubmitStatus('success');
+      // Set success or warning status based on auto-reply result
+      if (autoReplyFailed) {
+        setStatusMessage('Message sent, but auto-reply failed. The contact will not receive a confirmation email.');
+        setSubmitStatus('warning');
+      } else {
+        setStatusMessage('Message sent successfully! I\'ll get back to you soon.');
+        setSubmitStatus('success');
+      }
       reset();
     } catch (error: any) {
       console.error('Email sending error:', error);
@@ -88,6 +126,23 @@ const Contact: React.FC<ContactProps> = ({ personalInfo }) => {
       }
       // Show more specific error message
       console.error('Full error object:', JSON.stringify(error, null, 2));
+
+      // Set user-friendly error message
+      let errorMessage = 'Failed to send message. Please try again.';
+      if (error.text) {
+        try {
+          const errorData = JSON.parse(error.text);
+          if (errorData.message) {
+            errorMessage = errorData.message;
+          }
+        } catch {
+          // If parsing fails, use default message
+        }
+      } else if (error.message) {
+        errorMessage = error.message;
+      }
+
+      setStatusMessage(errorMessage);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -95,27 +150,52 @@ const Contact: React.FC<ContactProps> = ({ personalInfo }) => {
   };
 
   return (
-    <div className="section contact my-5" id="contact">
-      <div id="map" className="map"></div>
-      <div className="container">
-        <div className="contact-grid">
-          <div>
-            <div className="contact-form-card">
-              <h4 className="contact-title">Send a message</h4>
-              
-              {submitStatus === 'success' && (
-                <div className="alert alert-success" role="alert">
-                  Message sent successfully! I'll get back to you soon.
-                </div>
-              )}
-              
-              {submitStatus === 'error' && (
-                <div className="alert alert-danger" role="alert">
-                  Failed to send message. Please try again.
-                </div>
-              )}
-              
-              <form onSubmit={handleSubmit(onSubmit)} className="contact-form">
+    <React.Fragment>
+      {/* Toast Notifications - Fixed at top-right */}
+      <div className="toast-container">
+        {submitStatus === 'success' && (
+          <div className="toast toast-success" role="alert">
+            <div className="toast-icon">
+              <i className="fas fa-check-circle"></i>
+            </div>
+            <div className="toast-message">
+              {statusMessage || 'Message sent successfully! I\'ll get back to you soon.'}
+            </div>
+          </div>
+        )}
+
+        {submitStatus === 'error' && (
+          <div className="toast toast-error" role="alert">
+            <div className="toast-icon">
+              <i className="fas fa-exclamation-circle"></i>
+            </div>
+            <div className="toast-message">
+              {statusMessage || 'Failed to send message. Please try again.'}
+            </div>
+          </div>
+        )}
+
+        {submitStatus === 'warning' && (
+          <div className="toast toast-warning" role="alert">
+            <div className="toast-icon">
+              <i className="fas fa-exclamation-triangle"></i>
+            </div>
+            <div className="toast-message">
+              {statusMessage || 'Warning: Something went wrong.'}
+            </div>
+          </div>
+        )}
+      </div>
+
+      <div className="section contact my-5" id="contact">
+        <div id="map" className="map"></div>
+        <div className="container">
+          <div className="contact-grid">
+            <div>
+              <div className="contact-form-card">
+                <h4 className="contact-title">Send a message</h4>
+
+                <form onSubmit={handleSubmit(onSubmit)} className="contact-form">
                 <div className="form-group">
                   <input
                     {...register('name', { 
@@ -246,7 +326,8 @@ const Contact: React.FC<ContactProps> = ({ personalInfo }) => {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </React.Fragment>
   );
 };
 

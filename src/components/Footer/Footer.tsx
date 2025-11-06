@@ -3,7 +3,7 @@ import './Footer.css';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
-  
+
   return (
     <footer className="footer py-3">
       <div className="container d-flex justify-content-center align-items-center">

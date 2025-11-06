@@ -1,5 +1,5 @@
 // Data for the portfolio
-import { PersonalInfo, Experience, Education, Skill, Language, Service, Article, Statistics } from '../types';
+import { PersonalInfo, Experience, Education, Skill, Language, Service, Article, Statistics, Project } from '../types';
 
 export const personalInfo: PersonalInfo = {
   name: "SaQiB",
@@ -72,7 +72,7 @@ export const skills: Skill[] = [
   { name: "Selenium Webdriver", icon: "selenium.png", level: 85 },
   { name: "Cypress", icon: "cypress.svg", level: 80 },
   { name: "Manual Testing", icon: "manual-testing.png", level: 95 },
-  { name: "Ruby on Rails", icon: "rails.svg", level: 75 }
+  { name: "Ruby on Rails", icon: "rails.svg", level: 75 },
 ];
 
 export const languages: Language[] = [
@@ -202,3 +202,31 @@ export const statistics: Statistics = {
   happyClients: 7,
   coffeeDrinked: 0
 };
+
+export const projects: Project[] = [
+  {
+    name: "Beambox",
+    logo: "/assets/imgs/beambox.svg",
+    url: "https://beambox.com/"
+  },
+  {
+    name: "EasyLlama",
+    logo: "/assets/imgs/eaysllama.png", // Note: filename has typo "eaysllama"
+    url: "https://www.easyllama.com/"
+  },
+  {
+    name: "Lumimeds",
+    logo: "/assets/imgs/lumimeds.svg",
+    url: "https://lumimeds.com/"
+  },
+  {
+    name: "Worship Support Network",
+    logo: "/assets/imgs/WSN_logo.png",
+    url: "https://worshipsn.com/"
+  },
+  {
+    name: "Walexport",
+    logo: "/assets/imgs/logo-walexport.png",
+    url: "https://www.walexport.fr/"
+  }
+];

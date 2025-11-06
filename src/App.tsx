@@ -5,6 +5,7 @@ import Header from './components/Header/Header';
 import About from './components/About/About';
 import Resume from './components/Resume/Resume';
 import Services from './components/Services/Services';
+import Projects from './components/Projects/Projects';
 import Articles from './components/Articles/Articles';
 import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
@@ -15,6 +16,7 @@ import {
   skills, 
   languages, 
   services, 
+  projects,
   articles, 
   statistics 
 } from './data';
@@ -38,6 +40,7 @@ function App() {
         statistics={statistics}
       />
       <Services services={services} />
+      <Projects projects={projects} />
       <Articles articles={articles} />
       <Contact personalInfo={personalInfo} />
       <Footer />

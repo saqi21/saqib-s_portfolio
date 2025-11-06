@@ -12,7 +12,7 @@ const Contact: React.FC<ContactProps> = ({ personalInfo }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error' | 'warning'>('idle');
   const [statusMessage, setStatusMessage] = useState<string>('');
-  
+
   const { 
     register, 
     handleSubmit, 
@@ -46,14 +46,14 @@ const Contact: React.FC<ContactProps> = ({ personalInfo }) => {
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
     setSubmitStatus('idle');
-    
+
     try {
       // EmailJS configuration
       const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID;
       const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID; // Contact form template
       const autoReplyTemplateId = process.env.REACT_APP_EMAILJS_AUTO_REPLY_TEMPLATE_ID; // Auto-reply template
       const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
-      
+
       // Validate configuration
       if (!serviceId || !templateId || !publicKey) {
         setStatusMessage('EmailJS configuration is missing. Please check your .env file.');

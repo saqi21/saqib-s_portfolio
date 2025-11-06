@@ -71,3 +71,9 @@ export interface Statistics {
   happyClients: number;
   coffeeDrinked: number;
 }
+
+export interface Project {
+  name: string;
+  url?: string;
+  logo?: string; // Path to project logo/image
+}

@@ -37,7 +37,7 @@ const Resume: React.FC<ResumeProps> = ({ experiences, education, skills, languag
                   </div>
                   <h3>Professional Experience</h3>
                 </div>
-                
+
                 <div className="timeline">
                   {experiences.map((exp, index) => (
                     <div key={index} className="timeline-item">
@@ -82,7 +82,7 @@ const Resume: React.FC<ResumeProps> = ({ experiences, education, skills, languag
                   </div>
                   <h3>Languages</h3>
                 </div>
-                
+
                 <div className="languages-grid">
                   {languages.map((lang, index) => (
                     <div key={index} className="language-card">
@@ -117,7 +117,7 @@ const Resume: React.FC<ResumeProps> = ({ experiences, education, skills, languag
                   </div>
                   <h3>Education</h3>
                 </div>
-                
+
                 <div className="education-grid">
                   {education.map((edu, index) => (
                     <div key={index} className="education-card">
@@ -199,7 +199,7 @@ const Resume: React.FC<ResumeProps> = ({ experiences, education, skills, languag
               <h3>Professional Milestones</h3>
               <p>Numbers that reflect my dedication and expertise</p>
             </div>
-            
+
             <div className="stats-grid">
               <div className="stat-card">
                 <div className="stat-icon">
@@ -210,7 +210,7 @@ const Resume: React.FC<ResumeProps> = ({ experiences, education, skills, languag
                   <div className="stat-label">Hours Worked/Day</div>
                 </div>
               </div>
-              
+
               <div className="stat-card">
                 <div className="stat-icon">
                   <i className="fas fa-project-diagram"></i>
@@ -220,7 +220,7 @@ const Resume: React.FC<ResumeProps> = ({ experiences, education, skills, languag
                   <div className="stat-label">Projects Completed</div>
                 </div>
               </div>
-              
+
               <div className="stat-card">
                 <div className="stat-icon">
                   <i className="fas fa-smile"></i>
@@ -230,7 +230,7 @@ const Resume: React.FC<ResumeProps> = ({ experiences, education, skills, languag
                   <div className="stat-label">Happy Clients</div>
                 </div>
               </div>
-              
+
               <div className="stat-card">
                 <div className="stat-icon">
                   <i className="fas fa-coffee"></i>

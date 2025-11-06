@@ -33,7 +33,7 @@ const Header: React.FC<HeaderProps> = ({ personalInfo }) => {
                 <span>Frontend & QA Engineer</span>
               </div>
             </div>
-            
+
             <div className="nav-links">
               <a href="#about" className="nav-link">About</a>
               <a href="#resume" className="nav-link">Resume</a>
@@ -54,21 +54,21 @@ const Header: React.FC<HeaderProps> = ({ personalInfo }) => {
                 <span className="greeting-text">Hello, I'm</span>
                 <div className="greeting-line"></div>
               </div>
-              
+
               <h1 className="hero-title">
                 <span className="gradient-text">{personalInfo.name}</span>
               </h1>
-              
+
               <h2 className="hero-subtitle">
                 {personalInfo.title}
               </h2>
-              
+
               <p className="hero-description">
                 Passionate about creating exceptional user experiences through 
                 frontend development and ensuring software quality through 
                 comprehensive testing strategies.
               </p>
-              
+
               <div className="hero-actions">
                 <a 
                   href={getAssetPath('/resume/Saqib_Zafar_Resume.pdf')} 
@@ -86,7 +86,7 @@ const Header: React.FC<HeaderProps> = ({ personalInfo }) => {
                 </a>
               </div>
             </div>
-            
+
             <div className="hero-visual">
               <div className="hero-image-container">
                 <div className="hero-image">
@@ -109,7 +109,7 @@ const Header: React.FC<HeaderProps> = ({ personalInfo }) => {
               </div>
             </div>
           </div>
-          
+
           {/* Social Links */}
           <div className="hero-social">
             <div className="social-links">
@@ -129,7 +129,7 @@ const Header: React.FC<HeaderProps> = ({ personalInfo }) => {
           </div>
         </div>
       </div>
-      
+
       {/* Scroll Indicator */}
       <div className="scroll-indicator">
         <div className="scroll-line"></div>

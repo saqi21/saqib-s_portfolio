@@ -39,19 +39,19 @@ const About: React.FC<AboutProps> = ({ personalInfo, skills = [] }) => {
                     with a Bachelor's degree in Computer Science from GIFT University. I combine technical expertise with 
                     a passion for delivering exceptional digital experiences.
                   </p>
-                  
+
                   <p>
                     I specialize in building responsive, user-friendly interfaces using modern technologies including 
                     <strong> JavaScript, React, Ruby on Rails, Selenium WebDriver, and Cypress</strong>. My focus is on creating 
                     seamless user experiences while ensuring the highest standards of software quality through rigorous testing.
                   </p>
-                  
+
                   <p>
                     With expertise in both <strong>Manual Testing</strong> and <strong>Automation Testing</strong>, I help businesses 
                     deliver reliable, bug-free software solutions. My collaborative approach and attention to detail ensure 
                     projects are completed on time and exceed expectations.
                   </p>
-                  
+
                   <div className="about-stats">
                     <div className="stat-item">
                       <div className="stat-number">3+</div>
@@ -89,7 +89,7 @@ const About: React.FC<AboutProps> = ({ personalInfo, skills = [] }) => {
                       <span className="contact-value">{personalInfo.email}</span>
                     </div>
                   </div>
-                  
+
                   <div className="contact-item">
                     <div className="contact-icon">
                       <i className="fas fa-phone"></i>
@@ -99,7 +99,7 @@ const About: React.FC<AboutProps> = ({ personalInfo, skills = [] }) => {
                       <span className="contact-value">{personalInfo.phone}</span>
                     </div>
                   </div>
-                  
+
                   <div className="contact-item">
                     <div className="contact-icon">
                       <i className="fas fa-map-marker-alt"></i>
@@ -110,7 +110,6 @@ const About: React.FC<AboutProps> = ({ personalInfo, skills = [] }) => {
                     </div>
                   </div>
                 </div>
-                
                 <div className="social-links">
                   <h4>Follow Me</h4>
                   <div className="social-icons">

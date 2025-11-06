@@ -1,0 +1,331 @@
+/* Projects Section */
+.section.projects {
+  padding: 6rem 0 0;
+  background: var(--dark-bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.projects-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Horizontal Carousel Container */
+.projects-carousel-wrapper {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  overflow: hidden;
+  padding: 2rem 0;
+}
+
+.projects-carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Infinite Scrolling Track - True seamless loop */
+.projects-track {
+  display: flex;
+  gap: 1.5rem;
+  animation: scroll-horizontal 60s linear infinite;
+  width: fit-content;
+  padding: 0;
+  will-change: transform;
+}
+
+/* Pause animation on hover */
+.projects-carousel-wrapper:hover .projects-track {
+  animation-play-state: paused;
+}
+
+@keyframes scroll-horizontal {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-1 * var(--one-set-width, 1320px)));
+  }
+}
+
+/* Project Cards - White background, exactly 4 visible - Smaller width */
+.project-card {
+  flex: 0 0 200px; /* Fixed width for smaller cards */
+  height: 140px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 0.75rem;
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.15),
+    0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  width: 200px;
+  min-width: 200px;
+  max-width: 200px;
+}
+
+.project-card-link {
+  cursor: pointer;
+}
+
+.project-card-link:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--primary-gradient);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.project-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(102, 126, 234, 0.4);
+  box-shadow: 
+    0 8px 32px rgba(102, 126, 234, 0.3),
+    0 4px 16px rgba(102, 126, 234, 0.2);
+  background: rgba(255, 255, 255, 1);
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+.project-card:hover::after {
+  opacity: 1;
+}
+
+/* Project Icon - Smaller */
+.project-icon {
+  font-size: 1.5rem;
+  color: var(--primary-light);
+  margin-bottom: 0.4rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.9;
+}
+
+.project-card:hover .project-icon {
+  transform: scale(1.1);
+  color: var(--primary-color);
+  opacity: 1;
+}
+
+/* Project Logo - Auto-sizing - Smaller */
+.project-logo {
+  width: 100%;
+  min-height: 40px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.4rem;
+  position: relative;
+  flex-shrink: 0;
+  /* No background - card has white background */
+}
+
+.project-logo img {
+  max-width: 80%;
+  max-height: 45px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: 
+    drop-shadow(0 2px 6px rgba(0, 0, 0, 0.2))
+    brightness(1.02)
+    contrast(1.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card:hover .project-logo img {
+  transform: scale(1.08);
+  filter: 
+    drop-shadow(0 4px 12px rgba(102, 126, 234, 0.4))
+    brightness(1.1)
+    contrast(1.2);
+}
+
+/* Project Name - Smaller */
+.project-name {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  text-align: center;
+  text-transform: capitalize;
+  letter-spacing: 0.2px;
+  margin-top: 0.2rem;
+  opacity: 0.9;
+  transition: all 0.4s ease;
+  line-height: 1.2;
+  flex-shrink: 0;
+}
+
+.project-card:hover .project-name {
+  opacity: 1;
+  color: #000;
+}
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+  .project-card {
+    flex: 0 0 180px;
+    width: 180px;
+    min-width: 180px;
+    max-width: 180px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .project-card {
+    flex: 0 0 160px; /* Smaller width */
+    width: 160px;
+    min-width: 160px;
+    max-width: 160px;
+    height: 130px;
+    padding: 0.75rem 0.625rem;
+  }
+
+  .project-logo {
+    min-height: 35px;
+  }
+
+  .project-logo img {
+    max-height: 40px;
+  }
+
+  .project-icon {
+    font-size: 1.5rem;
+  }
+
+  .project-name {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .section.projects {
+    padding: 4rem 0;
+  }
+
+  .projects-header {
+    margin-bottom: 3rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+  }
+
+  .project-card {
+    flex: 0 0 140px; /* Smaller width */
+    width: 140px;
+    min-width: 140px;
+    max-width: 140px;
+    height: 120px;
+    padding: 0.75rem 0.625rem;
+  }
+
+  .project-logo {
+    min-height: 30px;
+    margin-bottom: 0.3rem;
+  }
+
+  .project-logo img {
+    max-height: 38px;
+  }
+
+  .project-icon {
+    font-size: 1.25rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .project-name {
+    font-size: 0.7rem;
+  }
+
+  .projects-track {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-card {
+    flex: 0 0 120px; /* Smaller width */
+    width: 120px;
+    min-width: 120px;
+    max-width: 120px;
+    height: 110px;
+    padding: 0.625rem 0.5rem;
+  }
+
+  .project-logo {
+    min-height: 28px;
+  }
+
+  .project-logo img {
+    max-height: 35px;
+  }
+
+  .project-icon {
+    font-size: 1.15rem;
+  }
+
+  .project-name {
+    font-size: 0.65rem;
+  }
+
+  .projects-track {
+    gap: 0.75rem;
+  }
+}

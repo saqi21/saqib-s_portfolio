@@ -171,7 +171,7 @@ export const caseStudies: CaseStudy[] = [
     id: 'lumimeds',
     title: 'Lumimeds - Redefining Digital Healthcare Quality',
     client: 'Devsloop',
-    category: 'Healthcare QA & Quality Assurance',
+    category: 'Healthcare & Quality Assurance',
     image: '/assets/imgs/lumimeds.svg',
     summary: 'Lumimeds is an advanced healthcare platform designed to streamline patient–provider interactions through telemedicine, pharmacy management, and appointment handling — all in one seamless ecosystem. From remote consultations to prescription tracking, Lumimeds bridges the gap between doctors, pharmacies, and patients.',
     detailedSummary: 'As Lead QA Engineer, I owned the responsibility of ensuring excellence, consistency, and user trust across the entire platform — from backend APIs to patient-facing UI. This project became not just a testing assignment but a reflection of my dedication to product quality, process improvement, and cross-functional collaboration.',

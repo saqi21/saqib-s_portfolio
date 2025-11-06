@@ -193,135 +193,223 @@ const Contact: React.FC<ContactProps> = ({ personalInfo }) => {
           <div className="contact-grid">
             <div>
               <div className="contact-form-card">
-                <h4 className="contact-title">Send a message</h4>
+                <div className="contact-header-section">
+                  <div className="contact-title-wrapper">
+                    <i className="fas fa-envelope-open-text contact-title-icon"></i>
+                    <h4 className="contact-title">Send a message</h4>
+                  </div>
+                  <p className="contact-subtitle">Fill out the form below and I'll get back to you as soon as possible</p>
+                </div>
 
                 <form onSubmit={handleSubmit(onSubmit)} className="contact-form">
-                <div className="form-group">
-                  <input
-                    {...register('name', { 
-                      required: 'Name is required',
-                      minLength: {
-                        value: 2,
-                        message: 'Name must be at least 2 characters'
-                      }
-                    })}
-                    className={`form-control contact-input ${errors.name ? 'is-invalid' : ''}`}
-                    type="text"
-                    placeholder="Name *"
-                    disabled={isSubmitting}
-                  />
-                  {errors.name && (
-                    <div className="invalid-feedback">
-                      {errors.name.message}
+                  <div className="form-row">
+                    <div className="form-group">
+                      <label className="form-label">
+                        <i className="fas fa-user form-label-icon"></i>
+                        Name *
+                      </label>
+                      <input
+                        {...register('name', { 
+                          required: 'Name is required',
+                          minLength: {
+                            value: 2,
+                            message: 'Name must be at least 2 characters'
+                          }
+                        })}
+                        className={`form-control contact-input ${errors.name ? 'is-invalid' : ''}`}
+                        type="text"
+                        placeholder="Enter your full name"
+                        disabled={isSubmitting}
+                      />
+                      {errors.name && (
+                        <div className="invalid-feedback">
+                          {errors.name.message}
+                        </div>
+                      )}
                     </div>
-                  )}
-                </div>
-                
-                <div className="form-group">
-                  <input
-                    {...register('email', { 
-                      required: 'Email is required',
-                      pattern: {
-                        value: /^\S+@\S+$/i,
-                        message: 'Invalid email address'
-                      }
-                    })}
-                    className={`form-control contact-input ${errors.email ? 'is-invalid' : ''}`}
-                    type="email"
-                    placeholder="Email *"
-                    disabled={isSubmitting}
-                  />
-                  {errors.email && (
-                    <div className="invalid-feedback">
-                      {errors.email.message}
+                    
+                    <div className="form-group">
+                      <label className="form-label">
+                        <i className="fas fa-envelope form-label-icon"></i>
+                        Email *
+                      </label>
+                      <input
+                        {...register('email', { 
+                          required: 'Email is required',
+                          pattern: {
+                            value: /^\S+@\S+$/i,
+                            message: 'Invalid email address'
+                          }
+                        })}
+                        className={`form-control contact-input ${errors.email ? 'is-invalid' : ''}`}
+                        type="email"
+                        placeholder="your.email@example.com"
+                        disabled={isSubmitting}
+                      />
+                      {errors.email && (
+                        <div className="invalid-feedback">
+                          {errors.email.message}
+                        </div>
+                      )}
                     </div>
-                  )}
-                </div>
-                
-                <div className="form-group form-group--full">
-                  <textarea
-                    {...register('message', { 
-                      required: 'Message is required',
-                      minLength: {
-                        value: 10,
-                        message: 'Message must be at least 10 characters'
-                      }
-                    })}
-                    className={`form-control contact-textarea ${errors.message ? 'is-invalid' : ''}`}
-                    placeholder="Message *"
-                    rows={7}
-                    disabled={isSubmitting}
-                  />
-                  {errors.message && (
-                    <div className="invalid-feedback">
-                      {errors.message.message}
-                    </div>
-                  )}
-                </div>
-                
-                <div className="form-group form-group--full">
-                  <button 
-                    type="submit" 
-                    className="form-control btn btn-danger w-100 contact-submit"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-                        Sending...
-                      </>
-                    ) : (
-                      'Send Message'
+                  </div>
+                  
+                  <div className="form-group form-group--full">
+                    <label className="form-label">
+                      <i className="fas fa-comment-alt form-label-icon"></i>
+                      Message *
+                    </label>
+                    <textarea
+                      {...register('message', { 
+                        required: 'Message is required',
+                        minLength: {
+                          value: 10,
+                          message: 'Message must be at least 10 characters'
+                        }
+                      })}
+                      className={`form-control contact-textarea ${errors.message ? 'is-invalid' : ''}`}
+                      placeholder="Tell me about your project or inquiry..."
+                      rows={6}
+                      disabled={isSubmitting}
+                    />
+                    {errors.message && (
+                      <div className="invalid-feedback">
+                        {errors.message.message}
+                      </div>
                     )}
-                  </button>
+                  </div>
+                  
+                  <div className="form-group form-group--full d-flex align-items-center justify-content-center mt-4">
+                    <button 
+                      type="submit" 
+                      className="form-control btn btn-danger w-100 contact-submit"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          <i className="fas fa-paper-plane me-2"></i>
+                          Send Message
+                        </>
+                      )}
+                    </button>
+                  </div>
+                </form>
+              
+                <div className="contact-form-footer">
+                  <div className="form-footer-info">
+                    <div className="footer-info-item">
+                      <div className="footer-icon-wrapper">
+                        <i className="fas fa-shield-alt"></i>
+                      </div>
+                      <div className="footer-text-wrapper">
+                        <span className="footer-item-title">Secure & Private</span>
+                        <span className="footer-item-desc">Your data is protected</span>
+                      </div>
+                    </div>
+                    <div className="footer-info-item">
+                      <div className="footer-icon-wrapper">
+                        <i className="fas fa-clock"></i>
+                      </div>
+                      <div className="footer-text-wrapper">
+                        <span className="footer-item-title">Quick Response</span>
+                        <span className="footer-item-desc">Within 24 hours</span>
+                      </div>
+                    </div>
+                    <div className="footer-info-item">
+                      <div className="footer-icon-wrapper">
+                        <i className="fas fa-check-circle"></i>
+                      </div>
+                      <div className="footer-text-wrapper">
+                        <span className="footer-item-title">100% Reliable</span>
+                        <span className="footer-item-desc">Guaranteed delivery</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </form>
             </div>
           </div>
           
           <div>
             <div className="contact-info-card contact-infor-card-flex">
-              <h4 className="contact-title">Get in touch</h4>
+              <div className="contact-header-section">
+                <h4 className="contact-title">Get in touch</h4>
+                <p className="contact-subtitle">Let's discuss your project and bring your ideas to life</p>
+              </div>
               
-              <div className="info-row">
-                <div className="info-icon"><i className="fas fa-phone"></i></div>
-                <div className="info-text">
-                  <div className="info-label">Phone</div>
-                  <div className="info-value">{personalInfo.phone}</div>
+              <div className="contact-info-section">
+                <div className="info-row">
+                  <div className="info-icon-wrapper">
+                    <div className="info-icon"><i className="fas fa-phone"></i></div>
+                  </div>
+                  <div className="info-text">
+                    <div className="info-label">Phone</div>
+                    <div className="info-value">
+                      <a href={`tel:${personalInfo.phone.replace(/\s/g, '')}`} className="info-link">
+                        {personalInfo.phone}
+                      </a>
+                    </div>
+                    <div className="info-note">Available Mon-Fri, 9AM-6PM PKT</div>
+                  </div>
+                </div>
+                
+                <div className="info-row">
+                  <div className="info-icon-wrapper">
+                    <div className="info-icon"><i className="fas fa-map-marker-alt"></i></div>
+                  </div>
+                  <div className="info-text">
+                    <div className="info-label">Address</div>
+                    <div className="info-value">{personalInfo.address}</div>
+                    <div className="info-note">Open to remote collaboration worldwide</div>
+                  </div>
+                </div>
+                
+                <div className="info-row">
+                  <div className="info-icon-wrapper">
+                    <div className="info-icon"><i className="fa fa-envelope"></i></div>
+                  </div>
+                  <div className="info-text">
+                    <div className="info-label">Email</div>
+                    <div className="info-value">
+                      <a href={`mailto:${personalInfo.email}`} className="info-link">
+                        {personalInfo.email}
+                      </a>
+                    </div>
+                    <div className="info-note">Response within 24 hours</div>
+                  </div>
                 </div>
               </div>
               
-              <div className="info-row">
-                <div className="info-icon"><i className="fas fa-map-marker-alt"></i></div>
-                <div className="info-text">
-                  <div className="info-label">Address</div>
-                  <div className="info-value">{personalInfo.address}</div>
+              <div className="contact-availability">
+                <div className="availability-badge">
+                  <span className="availability-dot"></span>
+                  <span className="availability-text">Available for new projects</span>
                 </div>
               </div>
               
-              <div className="info-row">
-                <div className="info-icon"><i className="fa fa-envelope"></i></div>
-                <div className="info-text">
-                  <div className="info-label">Email</div>
-                  <div className="info-value">{personalInfo.email}</div>
-                </div>
+              <div className="contact-social-section">
+                <div className="social-section-title">Connect with me</div>
+                <ul className="social-icons">
+                  {personalInfo.socialLinks.map((link) => (
+                    <li key={link.platform} className="social-item">
+                      <a 
+                        className="social-link" 
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={link.platform}
+                        title={link.platform.charAt(0).toUpperCase() + link.platform.slice(1)}
+                      >
+                        <i className={`fab fa-${link.platform}`}></i>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              
-              <ul className="social-icons pt-3">
-                {personalInfo.socialLinks.map((link) => (
-                  <li key={link.platform} className="social-item">
-                    <a 
-                      className="social-link" 
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={link.platform}
-                    >
-                      <i className={`fab fa-${link.platform}`}></i>
-                    </a>
-                  </li>
-                ))}
-              </ul>
             </div>
           </div>
         </div>

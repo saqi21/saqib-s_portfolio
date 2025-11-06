@@ -1,8 +1,12 @@
 /* Modern Resume Section Styles */
 .resume-section {
-  padding: 6rem 0;
+  padding: 2rem 0 6rem;
   background: var(--dark-bg);
   position: relative;
+  margin-top: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .resume-section::before {
@@ -529,6 +533,9 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .stat-card {
@@ -604,13 +611,14 @@
   }
   
   .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 }
 
 @media (max-width: 768px) {
   .resume-section {
-    padding: 4rem 0;
+    padding: 2rem 0 4rem;
   }
   
   .resume-content {

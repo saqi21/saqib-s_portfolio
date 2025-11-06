@@ -1,8 +1,12 @@
 /* About Section Styles */
 .about-section {
-  padding: 6rem 0;
+  padding: 2rem 0 6rem;
   background: var(--dark-bg);
   position: relative;
+  margin-top: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .about-section::before {
@@ -114,6 +118,9 @@
   margin-top: 2rem;
   padding-top: 2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .stat-item {
@@ -354,7 +361,8 @@
   }
   
   .about-stats {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
   .contact-info {
@@ -368,7 +376,7 @@
 
 @media (max-width: 768px) {
   .about-section {
-    padding: 4rem 0;
+    padding: 2rem 0 4rem;
   }
   
   .section-title {

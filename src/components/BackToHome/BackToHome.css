@@ -1,0 +1,79 @@
+.back-to-home-btn {
+  position: fixed;
+  top: 110px;
+  left: 20px;
+  z-index: 9998;
+  max-width: calc(100vw - 40px);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(30, 30, 50, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--text-primary);
+  padding: 0.75rem 1.25rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  animation: slideInLeft 0.4s ease-out;
+}
+
+.back-to-home-btn:hover {
+  transform: translateX(4px);
+  background: rgba(30, 30, 50, 0.95);
+  border-color: rgba(102, 126, 234, 0.4);
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.4),
+    0 0 0 3px rgba(102, 126, 234, 0.1);
+  color: var(--primary-light);
+  text-decoration: none;
+}
+
+.back-to-home-btn i {
+  font-size: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.back-to-home-btn:hover i {
+  transform: scale(1.1);
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .back-to-home-btn {
+    top: 100px;
+    left: 10px;
+    padding: 0;
+    font-size: 0.85rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    justify-content: center;
+    max-width: 44px;
+  }
+
+  .back-to-home-btn span {
+    display: none;
+  }
+
+  .back-to-home-btn i {
+    font-size: 1.1rem;
+  }
+}
+

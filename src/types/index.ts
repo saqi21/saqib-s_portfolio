@@ -73,7 +73,74 @@ export interface Statistics {
 }
 
 export interface Project {
+  id?: string;
   name: string;
   url?: string;
   logo?: string; // Path to project logo/image
+  description?: string;
+  technologies?: string[];
+  screenshots?: string[];
+  githubUrl?: string;
+  liveUrl?: string;
+  challenges?: string[];
+  results?: string[];
+}
+
+export interface Testimonial {
+  id: string;
+  name: string;
+  role: string;
+  company: string;
+  image?: string;
+  rating: number;
+  text: string;
+  project?: string;
+  date?: string;
+}
+
+export interface CaseStudy {
+  id: string;
+  title: string;
+  client: string;
+  category: string;
+  image: string;
+  summary: string;
+  problem: string;
+  solution: string;
+  technologies: string[];
+  results: string[];
+  challenges: string[];
+  screenshots?: string[];
+  liveUrl?: string;
+  githubUrl?: string;
+  duration?: string;
+  teamSize?: string;
+  // Extended fields for detailed case studies
+  role?: string;
+  keyContributions?: Array<{
+    title: string;
+    description: string;
+    highlights?: string[];
+    example?: string;
+  }>;
+  techStackDetails?: Array<{
+    category: string;
+    tools: string[];
+  }>;
+  achievements?: string[];
+  impactSummary?: Array<{
+    metric: string;
+    before: string;
+    after: string;
+  }>;
+  leadership?: string;
+  keyTakeaways?: string[];
+  detailedSummary?: string;
+}
+
+export interface FAQItem {
+  id: string;
+  question: string;
+  answer: string;
+  category?: string;
 }

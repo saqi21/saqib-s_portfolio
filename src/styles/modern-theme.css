@@ -59,6 +59,9 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
 }
 
 body {
@@ -67,6 +70,9 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+  position: relative;
 }
 
 /* Typography */
@@ -88,12 +94,47 @@ h6 { font-size: 1rem; }
   max-width: 1200px;
   margin: 0 auto;
   padding: var(--container-padding);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
 }
 
 /* Sections */
 .section {
   padding: var(--section-padding);
   position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Responsive Images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Responsive Tables */
+table {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  display: block;
+}
+
+/* Responsive Videos and Embeds */
+iframe,
+video,
+embed,
+object {
+  max-width: 100%;
+  height: auto;
 }
 
 /* Buttons */

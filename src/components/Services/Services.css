@@ -1,8 +1,12 @@
 /* Services - modern responsive design */
 .services-section {
-  padding: 6rem 0;
+  padding: 2rem 0 6rem;
   background: var(--dark-bg);
   position: relative;
+  margin-top: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .services-section::before {
@@ -34,6 +38,9 @@
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 1.25rem;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .service-card {
@@ -138,7 +145,9 @@
 }
 
 @media (max-width: 768px) {
-  .services-section { padding: 4rem 0; }
+  .services-section { 
+    padding: 2rem 0 4rem;
+  }
   .section-title { font-size: 2.25rem; }
   .service-card { grid-column: span 12; } /* 1 per row */
   .cta-box { flex-direction: column; text-align: center; }

@@ -14,4 +14,22 @@ code {
 
 .App {
   text-align: left;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Page Content Wrapper - Spacing for fixed header */
+.page-content {
+  margin-top: 90px;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  .page-content {
+    margin-top: 80px;
+  }
 }

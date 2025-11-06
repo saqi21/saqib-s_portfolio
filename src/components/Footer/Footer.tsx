@@ -1,18 +1,23 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Footer.css';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="footer py-3">
-      <div className="container d-flex justify-content-center align-items-center">
-        <p className="small mb-0 text-light">
-          &copy; {currentYear} Created With <i className="ti-heart text-danger"></i> By
-          <a href="https://saqi21.github.io/saqib-s_portfolio/">
-            <span className="text-danger" title="Bootstrap 4 Themes and Dashboards">SaQiB</span>
-          </a>
-        </p>
+    <footer className="modern-footer">
+      <div className="container">
+        <div className="footer-content">
+          <div className="footer-left">
+            <p className="footer-copyright">
+              &copy; {currentYear} <span className="footer-name">Saqib Zafar</span>. All rights reserved.
+            </p>
+            <p className="footer-credits">
+              Made with <i className="fas fa-heart footer-heart"></i> using React & TypeScript
+            </p>
+          </div>
+        </div>
       </div>
     </footer>
   );

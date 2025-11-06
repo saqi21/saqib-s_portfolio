@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Project } from '../../types';
 import { getAssetPath } from '../../utils/assets';
 import './Projects.css';
@@ -46,25 +47,31 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
       </>
     );
 
-    if (project.url) {
+    const projectId = project.id || project.name.toLowerCase().replace(/\s+/g, '-');
+    const projectUrl = project.url ? project.url : undefined;
+
+    if (projectUrl) {
       return (
-        <a
+        <Link
           key={`${project.name}-${index}`}
-          href={project.url}
-          target="_blank"
-          rel="noopener noreferrer"
+          to={`/projects/${projectId}`}
           className="project-card project-card-link"
-          aria-label={`Visit ${project.name}`}
+          aria-label={`View ${project.name} details`}
         >
           {cardContent}
-        </a>
+        </Link>
       );
     }
 
     return (
-      <div key={`${project.name}-${index}`} className="project-card">
+      <Link
+        key={`${project.name}-${index}`}
+        to={`/projects/${projectId}`}
+        className="project-card project-card-link"
+        aria-label={`View ${project.name} details`}
+      >
         {cardContent}
-      </div>
+      </Link>
     );
   };
 

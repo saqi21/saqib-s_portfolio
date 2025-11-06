@@ -1,6 +1,11 @@
 // Data for the portfolio
 import { PersonalInfo, Experience, Education, Skill, Language, Service, Article, Statistics, Project } from '../types';
 
+// Export data from other files
+export { testimonials } from './testimonials';
+export { caseStudies } from './caseStudies';
+export { faqItems } from './faq';
+
 export const personalInfo: PersonalInfo = {
   name: "SaQiB",
   title: "Front End & Software Quality Assurance Engineer",
@@ -205,28 +210,38 @@ export const statistics: Statistics = {
 
 export const projects: Project[] = [
   {
+    id: "beambox",
     name: "Beambox",
     logo: "/assets/imgs/beambox.svg",
-    url: "https://beambox.com/"
+    url: "https://beambox.com/",
+    description: "A comprehensive SaaS platform with robust QA testing and automation."
   },
   {
+    id: "easyllama",
     name: "EasyLlama",
     logo: "/assets/imgs/eaysllama.png", // Note: filename has typo "eaysllama"
-    url: "https://www.easyllama.com/"
+    url: "https://www.easyllama.com/",
+    description: "An e-learning platform with enhanced frontend and user experience."
   },
   {
+    id: "lumimeds",
     name: "Lumimeds",
     logo: "/assets/imgs/lumimeds.svg",
-    url: "https://lumimeds.com/"
+    url: "https://lumimeds.com/",
+    description: "A healthcare platform with modern UI/UX design."
   },
   {
+    id: "worship-support-network",
     name: "Worship Support Network",
     logo: "/assets/imgs/WSN_logo.png",
-    url: "https://worshipsn.com/"
+    url: "https://worshipsn.com/",
+    description: "A community platform for worship support and resources."
   },
   {
+    id: "walexport",
     name: "Walexport",
     logo: "/assets/imgs/logo-walexport.png",
-    url: "https://www.walexport.fr/"
+    url: "https://www.walexport.fr/",
+    description: "An export management platform with comprehensive features."
   }
 ];

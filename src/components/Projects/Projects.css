@@ -3,7 +3,10 @@
   padding: 6rem 0 0;
   background: var(--dark-bg);
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: visible;
+  width: 100%;
+  max-width: 100%;
 }
 
 .projects-header {
@@ -31,10 +34,11 @@
 /* Horizontal Carousel Container */
 .projects-carousel-wrapper {
   position: relative;
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
+  width: 100%;
+  max-width: 100%;
   overflow: hidden;
   padding: 2rem 0;
+  margin: 0;
 }
 
 .projects-carousel {
@@ -46,11 +50,12 @@
 /* Infinite Scrolling Track - True seamless loop */
 .projects-track {
   display: flex;
-  gap: 1.5rem;
+  gap: 4.5rem;
   animation: scroll-horizontal 60s linear infinite;
   width: fit-content;
   padding: 0;
   will-change: transform;
+  min-width: 0;
 }
 
 /* Pause animation on hover */
@@ -327,5 +332,179 @@
 
   .projects-track {
     gap: 0.75rem;
+  }
+}
+
+/* Project Detail Page */
+.project-detail {
+  padding: 8rem 0 6rem;
+  background: var(--dark-bg);
+  min-height: 80vh;
+  margin-top: 80px; /* Space for compact header */
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  margin-bottom: 2rem;
+  transition: color 0.3s ease;
+}
+
+.back-link:hover {
+  color: var(--primary-light);
+  text-decoration: none;
+}
+
+.project-detail-header {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  margin-bottom: 4rem;
+  padding: 2rem;
+  background: var(--dark-card);
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.project-detail-logo {
+  flex-shrink: 0;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+}
+
+.project-detail-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.project-icon-large {
+  font-size: 4rem;
+  color: var(--primary-light);
+}
+
+.project-detail-info {
+  flex: 1;
+}
+
+.project-detail-title {
+  font-size: 2.5rem;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.project-detail-description {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.project-detail-section {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: var(--dark-card);
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.section-heading {
+  font-size: 1.75rem;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(102, 126, 234, 0.3);
+}
+
+.project-tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.tech-badge {
+  background: var(--primary-gradient);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.project-list {
+  list-style: none;
+  padding: 0;
+}
+
+.project-list li {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.project-list li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--primary-light);
+  font-weight: bold;
+}
+
+.project-results li::before {
+  content: '✓';
+  color: #2ed573;
+}
+
+.project-detail-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+}
+
+.error-message {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-secondary);
+}
+
+.error-message h2 {
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .project-detail-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .project-detail-title {
+    font-size: 2rem;
+  }
+
+  .project-detail-actions {
+    flex-direction: column;
+  }
+
+  .project-detail-actions .btn {
+    width: 100%;
   }
 }

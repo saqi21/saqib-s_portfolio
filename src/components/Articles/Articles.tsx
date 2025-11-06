@@ -38,15 +38,40 @@ const Articles: React.FC<ArticlesProps> = ({ articles, useSlider = true }) => {
     ]
   };
 
-  const renderArticleCard = (article: Article) => (
-    <div key={article.id} className="blog-card">
-      <div className="img-holder">
-        <img 
-          src={getAssetPath(article.image)} 
-          alt={article.title}
-          loading="lazy"
-        />
-      </div>
+  const renderArticleCard = (article: Article) => {
+    // Use process.env.PUBLIC_URL which Create React App replaces at build time
+    const publicUrl = process.env.PUBLIC_URL || '';
+    const imagePath = `${publicUrl}${article.image}`;
+    
+    return (
+      <div key={article.id} className="blog-card">
+        <div className="img-holder">
+          <img 
+            src={imagePath} 
+            alt={article.title}
+            loading="lazy"
+            onError={(e) => {
+              // Fallback: try alternative paths
+              const target = e.target as HTMLImageElement;
+              const currentSrc = target.src;
+              
+              // Try with getAssetPath as fallback
+              const fallbackPath = getAssetPath(article.image);
+              if (currentSrc !== fallbackPath && !currentSrc.includes(fallbackPath)) {
+                target.src = fallbackPath;
+              } else {
+                // Show placeholder if all attempts fail
+                target.style.display = 'none';
+                if (!target.parentElement?.querySelector('.article-image-placeholder')) {
+                  const placeholder = document.createElement('div');
+                  placeholder.className = 'article-image-placeholder';
+                  placeholder.innerHTML = '<i class="fas fa-image"></i>';
+                  target.parentElement?.appendChild(placeholder);
+                }
+              }
+            }}
+          />
+        </div>
       <div className="content-holder">
         <h6 className="title">{article.title}</h6>
         <p className="post-details">
@@ -80,7 +105,8 @@ const Articles: React.FC<ArticlesProps> = ({ articles, useSlider = true }) => {
         </div>
       </div>
     </div>
-  );
+    );
+  };
 
   if (isLoading) {
     return (

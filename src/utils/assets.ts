@@ -15,57 +15,13 @@ export const getAssetPath = (path: string): string => {
   // Remove trailing slash from publicUrl if present
   const basePath = publicUrl.replace(/\/$/, '');
   
-  // Runtime check for production deployment
-  if (typeof window !== 'undefined') {
-    const hostname = window.location.hostname;
-    const pathname = window.location.pathname;
-    
-    // Production check: GitHub Pages or custom domain
-    if (hostname !== 'localhost' && hostname !== '127.0.0.1') {
-      // Extract base path from pathname if it exists (e.g., "/saqib-s_portfolio" from URL)
-      const pathParts = pathname.split('/').filter(Boolean);
-      const urlBasePath = pathParts.length > 0 ? pathParts[0] : '';
-      
-      // If URL has base path and it matches our expected base path, use it
-      if (urlBasePath && urlBasePath === 'saqib-s_portfolio') {
-        return `/${urlBasePath}${cleanPath}`;
-      }
-      
-      // If basePath is set from env, use it
-      if (basePath) {
-        return `${basePath}${cleanPath}`;
-      }
-      
-      // Fallback: use clean path (for custom domains without subpath)
-      return cleanPath;
-    }
-    
-    // Development: Check if we're on localhost with subpath
-    if (hostname === 'localhost' || hostname === '127.0.0.1') {
-      const pathParts = pathname.split('/').filter(Boolean);
-      const urlBasePath = pathParts.length > 0 ? pathParts[0] : '';
-      
-      // If there's a base path in the URL, use it
-      if (urlBasePath && urlBasePath !== 'index.html' && urlBasePath === 'saqib-s_portfolio') {
-        return `/${urlBasePath}${cleanPath}`;
-      }
-      
-      // Use PUBLIC_URL if set
-      if (basePath) {
-        return `${basePath}${cleanPath}`;
-      }
-      
-      // Otherwise, use root path
-      return cleanPath;
-    }
-  }
-  
-  // Fallback: Use PUBLIC_URL from environment
+  // Combine base path with clean path
+  // This works for both development and production
   if (basePath) {
     return `${basePath}${cleanPath}`;
   }
   
-  // Final fallback: return clean path
+  // Fallback: return clean path (for root deployment)
   return cleanPath;
 };
 
